@@ -1,0 +1,18 @@
+# misc
+*.pyc
+*.png
+*.zip
+*.ipynb_checkpoints
+safepaw_gen/data/raw_data/*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.ipynb
+
+
+# Mac system files
+.DS_Store
+# pixi environments
+.pixi/*
+!.pixi/config.toml

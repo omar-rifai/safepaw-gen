@@ -1,0 +1,10 @@
+# config.yaml
+data_maternity:
+  alpha: 1
+  min_fraction_to_be_treated: 0
+  max_fraction_to_be_treated: 1
+  min_quality_bound: 0
+  max_quality_bound: 1
+  avg_length_of_stay: 4.6
+  resource_transfer_unit: 365
+  labour_types_distribution : {"1": 0.50, "2a": 0.2, "2b": 0.2, "3": 0.1}
