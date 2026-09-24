@@ -12,5 +12,5 @@ Tool to generate instance for SAFEPAW casemix optimization.
 safepaw-gen maternities [dep_code]
 ````
 
-where `<dep_code>` is an French INSEE department code is needed for `maternties`and `ptgpth` instances. The json files are stored in the `outputs` directory.
+where `<dep_code>` is an French INSEE department code. The json files are stored in the `outputs` directory.
 
