@@ -7,6 +7,9 @@ name = "safepaw_gen"
 version = "0.0.1"
 authors = [{name = "Omar El Rifai"}]
 requires-python = ">=3.9"
+description = "Data generation tool for for casemix planning optimization"
+readme = "README.md"
+
 
 dependencies = [
     "fastapi >=0.123.7,<0.124.0",
@@ -25,9 +28,7 @@ dependencies = [
 ]
 
 
-description = "Data generation tool for for casemix planning optimization"
-readme = "README.md"
-requires-python = ">=3.9"
+
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
@@ -45,4 +46,7 @@ packages = ["package/safepaw_gen"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge"]
-platforms = ["linux-64", "osx-arm64"]  
+platforms = ["linux-64", "osx-arm64"]
+
+[tool.pixi.environments]
+dev = ["dev"]
