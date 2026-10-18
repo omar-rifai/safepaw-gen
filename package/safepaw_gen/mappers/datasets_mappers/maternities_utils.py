@@ -13,11 +13,15 @@ def  get_FacilityAffinity(df_instance: pd.DataFrame, df_geo_comms: pd.DataFrame,
     from shapely import distance
     import geopandas as gpd
     import numpy as np
-    
+
+    facility_ids = df_instance["nofinesset"].to_numpy()
+    region_ids = df_geo_comms["code"].to_numpy()
+
     if dep_code:
         df_distances = pd.read_parquet(osrm_distances_file)
         df_distances = df_distances[df_distances["dep_code"] == dep_code]
-        distances = df_distances.pivot(values="distance", index="nofinesset", columns="region").to_numpy()
+        distances = (df_distances.pivot(values="distance", index="nofinesset", columns="region")
+                     .reindex(index=facility_ids, columns=region_ids).to_numpy())
         print("Using OSRM distance succesfully")
     else:    
         print(f"No department selected fallback to geodesic distance") 
@@ -28,8 +32,6 @@ def  get_FacilityAffinity(df_instance: pd.DataFrame, df_geo_comms: pd.DataFrame,
         distances = distance(facility_geoms[:, None], region_geoms[None,:])
 
     scores = 1 / np.where(distances == 0, 100, distances)
-    facility_ids = df_instance["nofinesset"].to_numpy()
-    region_ids = df_geo_comms["code"].to_numpy()
 
     rows = [{"facility_id": facility_ids[i], "region_id": region_ids[j], "affinity_score": float(scores[i, j]),}
     for i in range(len(facility_ids))
